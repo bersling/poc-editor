@@ -1,20 +1,79 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<h1>Rendering XML strings to Angular</h1>
+
+<p>
+  <b>Goal:</b> Rendering any XML strings containing <b>known</b> components to Angular!
+</p>
+
+<h2>Predefined Components</h2>
+
+<p>
+  There are <b>two</b> components available for this example app.
+</p>
+
+<h3>
+  bla
+</h3>
+
+<div>
+  <pre class="angular-string">&lt;app-bla&gt;hello&lt;/app-bla&gt;</pre>
+  <p>
+    will yield:
+  </p>
+  <div>
+    <app-bla>hello</app-bla>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<h3>blub</h3>
+<div>
+  
+  <pre class="angular-string">&lt;app-blub title="some title"&gt;world&lt;/app-blub&gt;</pre>
+  <p>
+    will yield
+  </p>
+  <app-blub title="some title">world</app-blub>
+</div>
+
+<h3>Mixing the components</h3>
+<p>
+  The components can be mixed:
+</p>
+<pre class="angular-string">&lt;app-blub title="some title"&gt;bla &lt;app-bla&gt;hello&lt;/app-bla&gt; bla&lt;/app-blub&gt;</pre>
+should yield
+<app-blub title="some title">bla <app-bla>hello</app-bla> bla</app-blub>
+
+<h2>
+  Goal: Dynamically compile a string to "Angular"
+</h2>
+
+<p>
+  Let's assume now the Angular application doesn't know at startup in which combinations the components will occur.
+  I need a way to compile such dynamic compositions of components.
+</p>
+<p>
+  So I need a function similar to <span style="color: red">compileToAngular(angularString)</span>.
+</p>
+
+<h3>Objective</h3>
+
+<p>
+  <b>
+    Implement a function like that, such that I could input any string in the textarea below, click compile, and it would render
+    the Angular correctly.
+  </b>
+</p>
+
+<textarea name=""
+          id=""
+          cols="30"
+          rows="10"></textarea>
+<br>
+<button style="padding: 30px; background: orange; font-size: 18px" (click)="compileStringToAngularAndInsert()">
+  Compile
+</button>
+
+<div>
+  The compiled Angular should appear here:
+  <div id="compiled-angular">...this will be replaced...</div>
+</div>
 
